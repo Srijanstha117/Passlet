@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passlet</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="security-status">
+                <div class="security-indicator">
+                    <span class="security-dot"></span>
+                    <span class="security-text">Secure</span>
+                </div>
+            </div>
+            <h1>🔐 Passlet</h1>
+            <p>Secure Password Generator & Wallet</p>
+            <div class="security-features">
+                <span class="feature-badge">🔒 Local Storage</span>
+                <span class="feature-badge">🛡️ Encrypted</span>
+                <span class="feature-badge">🔐 Zero-Knowledge</span>
+            </div>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="generator">Generator</button>
+            <button class="tab-btn" data-tab="wallet">Wallet</button>
+        </div>
+
+        <!-- Password Generator Tab -->
+        <div class="tab-content active" id="generator">
+            <div class="password-display">
+                <input type="text" id="generated-password" readonly placeholder="Generated password will appear here">
+                <button id="copy-btn" title="Copy to clipboard">📋</button>
+            </div>
+            
+            <div class="password-strength" id="password-strength">
+                <div class="strength-bar">
+                    <div class="strength-fill" id="strength-fill"></div>
+                </div>
+                <div class="strength-text" id="strength-text">Password Strength</div>
+            </div>
+
+            <div class="password-options">
+                <div class="option-group">
+                    <label for="password-length">Length:</label>
+                    <input type="range" id="password-length" min="8" max="64" value="16">
+                    <span id="length-value">16</span>
+                </div>
+
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="uppercase" checked>
+                        Uppercase (A-Z)
+                    </label>
+                    <label>
+                        <input type="checkbox" id="lowercase" checked>
+                        Lowercase (a-z)
+                    </label>
+                    <label>
+                        <input type="checkbox" id="numbers" checked>
+                        Numbers (0-9)
+                    </label>
+                    <label>
+                        <input type="checkbox" id="symbols" checked>
+                        Symbols (!@#$%^&*)
+                    </label>
+                </div>
+
+                <button id="generate-btn" class="primary-btn">Generate Password</button>
+            </div>
+
+            <div class="save-section">
+                <input type="text" id="password-label" placeholder="Label (e.g., Gmail, Facebook)">
+                <button id="save-btn" class="secondary-btn">Save to Wallet</button>
+            </div>
+
+            <div class="divider">
+                <span>OR</span>
+            </div>
+
+            <div class="manual-add-section">
+                <h3>Add Existing Password</h3>
+                <div class="input-group">
+                    <input type="text" id="manual-password-label" placeholder="Label (e.g., YouTube, Netflix)">
+                </div>
+                <div class="input-group">
+                    <input type="password" id="manual-password-input" placeholder="Enter your password">
+                    <button id="toggle-password" type="button" title="Show/Hide password">👁️</button>
+                </div>
+                <button id="add-manual-btn" class="primary-btn">Add to Wallet</button>
+            </div>
+        </div>
+
+        <!-- Wallet Tab -->
+        <div class="tab-content" id="wallet">
+            <div class="wallet-header">
+                <h3>Saved Passwords</h3>
+                <div class="wallet-actions">
+                    <button id="download-passwords-btn" class="download-btn">📥 Download All</button>
+                    <button id="clear-all-btn" class="danger-btn">Clear All</button>
+                </div>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" id="search-passwords" placeholder="Search passwords...">
+            </div>
+
+            <div class="passwords-list" id="passwords-list">
+                <!-- Passwords will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

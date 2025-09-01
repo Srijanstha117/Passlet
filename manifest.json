@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Passlet - Password Generator & Wallet",
+  "version": "1.0.0",
+  "description": "Generate strong random passwords and store them securely in your wallet",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Passlet - Password Generator & Wallet"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+}
